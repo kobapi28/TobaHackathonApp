@@ -1,0 +1,17 @@
+.content{
+  text-align: center;
+  border: gold 1px solid;
+  border-radius: 16px;
+  padding: 8px;
+}
+
+.button{
+  /* twitter logo color  #1DA1F2 */
+  --background: #1DA1F2;
+}
+
+.button-logo{
+  margin-right: 8px;
+}
+
+/* TODO: 画面サイズによって、ボタンがはみ出たりする */
