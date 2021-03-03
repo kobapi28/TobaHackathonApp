@@ -7,12 +7,15 @@ import { Tab2Page } from './tab2.page';
 
 import { Tab2PageRoutingModule } from './tab2-routing.module';
 
+import { FoodlistModule } from '../../components/foodlist/foodlist.module';
+
 @NgModule({
   imports: [
     IonicModule,
     CommonModule,
     FormsModule,
-    Tab2PageRoutingModule
+    Tab2PageRoutingModule,
+    FoodlistModule
   ],
   declarations: [Tab2Page]
 })
