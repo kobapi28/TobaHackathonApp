@@ -1,13 +1,18 @@
-<ion-grid>
-  <ion-row>
-    <ion-col *ngFor="let i of datas" size="6">
-      <div class="content">
-        <img src="../../../assets/icon/favicon.png" alt="image">
-        <ion-button size="small" class="button">
-          <ion-icon name="logo-twitter" class="button-logo"></ion-icon>
-          Twitterで見る
-        </ion-button>
-      </div>
-    </ion-col>
-  </ion-row>
-</ion-grid>
+<div *ngIf="datas; else elseBlock">
+  <ion-grid>
+    <ion-row>
+      <ion-col *ngFor="let data of datas" size="6">
+        <div class="content">
+          <ion-img [src]="data.image" alt="image"></ion-img>
+          <ion-button size="small" class="button">
+            <ion-icon name="logo-twitter" class="button-logo"></ion-icon>
+            Twitterで見る
+          </ion-button>
+        </div>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</div>
+<ng-template #elseBlock>
+  <h1>データがありません</h1>
+</ng-template>
