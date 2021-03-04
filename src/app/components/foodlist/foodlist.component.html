@@ -4,7 +4,7 @@
       <ion-col *ngFor="let data of datas" size="6">
         <div class="content">
           <ion-img [src]="data.image" alt="image"></ion-img>
-          <ion-button size="small" class="button">
+          <ion-button size="small" class="button" [href]="data.link">
             <ion-icon name="logo-twitter" class="button-logo"></ion-icon>
             Twitterで見る
           </ion-button>

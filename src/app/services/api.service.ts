@@ -19,7 +19,7 @@ export class ApiService {
         map((res) => {
           const images = res.message;
           return images.map(image => {
-            return {image, link: 'hoge'};
+            return {image, link: 'https://twitter.com/about_hiroppy/status/1366933457109012480'};
           });
         })
       );
