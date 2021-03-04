@@ -2,13 +2,13 @@
   <ion-grid>
     <ion-row>
       <ion-col *ngFor="let data of datas" size="6">
-        <div class="content">
+        <ion-card class="content">
           <ion-img [src]="data.image" alt="image"></ion-img>
           <ion-button size="small" class="button" [href]="data.link">
             <ion-icon slot="start" name="logo-twitter" class="button-logo"></ion-icon>
             Twitterで見る
           </ion-button>
-        </div>
+        </ion-card>
       </ion-col>
     </ion-row>
   </ion-grid>
