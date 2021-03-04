@@ -1,5 +1,7 @@
 {
   "name": "TobaHackathonApp",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }
