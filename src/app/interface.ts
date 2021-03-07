@@ -6,5 +6,10 @@ export interface FoodListItem{
 
 // Responce Interface
 export interface ResponseFoodListItem{
-  message: string[];
+  res: [
+    {
+      img: string;
+      link: string;
+    }
+  ];
 }
