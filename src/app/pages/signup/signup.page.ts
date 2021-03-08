@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-signup',
@@ -7,9 +8,22 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignupPage implements OnInit {
 
-  constructor() { }
+  familyId = '';
+  twitterId = '';
+
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
+  }
+
+  createFamilyRoom(){
+    this.api.createFamilyRoom(this.familyId, this.twitterId).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
   }
 
 }

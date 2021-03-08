@@ -18,16 +18,8 @@ export class Tab1Page implements OnInit{
 
 
   ngOnInit(){
-    this.getApiData();
   }
 
-  getApiData(){
-    this.api.loadData().subscribe(
-      res => {
-        console.log(res);
-        this.datas = res;
-      }
-    );
-  }
+
 
 }

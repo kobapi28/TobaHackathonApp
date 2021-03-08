@@ -66,9 +66,12 @@ export class ApiService {
 
   // 部屋作成
   // signup
-  createFamilyRoom(): Observable<FoodListItem[]>{
-    console.log('post');
-    return this.http.post<ResponseFoodListItem>(`${this.baseURL}/create-family`, {twi_link: 'hoge'})
+  createFamilyRoom(familyId: string, twitterId: string): Observable<FoodListItem[]>{
+    console.log(twitterId);
+    console.log(familyId);
+    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    return this.http.post<ResponseFoodListItem>(`https://arcane-bastion-80677.herokuapp.com/create-family`,
+      {family_id: familyId, twi_id: twitterId}, {headers})
       .pipe(
         map((response) => {
           const datas = response.res;

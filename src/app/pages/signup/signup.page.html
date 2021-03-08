@@ -5,5 +5,7 @@
 </ion-header>
 
 <ion-content>
-
+  <ion-input [(ngModel)]="familyId" placeholder="familyId"></ion-input>
+  <ion-input [(ngModel)]="twitterId" placeholder="twitterId"></ion-input>
+  <ion-button (click)="createFamilyRoom()">作成する</ion-button>
 </ion-content>
