@@ -1,24 +1,28 @@
-.content{
-  text-align: center;
-  border-radius: 16px;
-  padding: 8px;
-}
-
-.button{
-  /* twitter logo color  #1DA1F2 */
-  --background: #1DA1F2;
-  display: inline-block;
-  width: 100%;
-}
-
-.button-logo{
-  margin-right: 8px;
+.item{
+  position: relative;
+  margin-top: 4px;
+  margin-bottom: 4px;
 }
 
 ion-img{
-  object-fit: contain;
-  width: 100%;
-  height: 160px;
-  margin-bottom: 16px;
+  object-fit: cover;
+  width: 100vmin;
+  height: 100vmin;
+}
+
+
+.fab-buttons{
+  position: absolute;
+  bottom: 8px;
+  right: 8px;
+}
+
+ion-fab-button{
+  display: inline-block;
+  margin-right: 4px;
+}
+
+.twitter-color{
+  --background: var(--ion-color-twitter);
 }
 
