@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from '../../services/api.service';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-signup',
@@ -12,7 +13,8 @@ export class SignupPage implements OnInit {
   twitterId = '';
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private navCtrl: NavController
   ) { }
 
   ngOnInit() {
@@ -24,6 +26,10 @@ export class SignupPage implements OnInit {
         console.log(res);
       }
     );
+  }
+
+  toSignIn(){
+    this.navCtrl.navigateForward('/signin');
   }
 
   // debug
