@@ -1,9 +1,14 @@
 <ion-header>
   <ion-toolbar>
+    <ion-icon class="back-icon" slot="start" name="chevron-back-outline"
+              size="large" tappable (click)="navigateBack()"></ion-icon>
     <ion-title>members</ion-title>
   </ion-toolbar>
 </ion-header>
 
 <ion-content>
-
+  <ion-item *ngFor="let user of users">
+    <ion-text>{{user.twitterId}}</ion-text>
+  </ion-item>
+  <ion-button (click)="inputAlert()">メンバーを追加する</ion-button>
 </ion-content>

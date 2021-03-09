@@ -12,11 +12,7 @@
       <ion-title size="large">設定</ion-title>
     </ion-toolbar>
   </ion-header>
-  <ion-item lines="none">
-    ダークモード設定(動きません)
-    <ion-toggle (click)="updateDarkMode()" slot="end"></ion-toggle>
-  </ion-item>
-  <ion-item lines="none">
+  <ion-item lines="none" (click)="toMembers()">
     <ion-text>メンバー一覧</ion-text>
     <ion-icon name="chevron-forward-outline" slot="end"></ion-icon>
   </ion-item>

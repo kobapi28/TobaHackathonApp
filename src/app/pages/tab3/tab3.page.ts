@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavController } from '@ionic/angular';
 
 @Component({
   selector: 'app-tab3',
@@ -6,24 +7,15 @@ import { Component } from '@angular/core';
   styleUrls: ['tab3.page.scss']
 })
 export class Tab3Page {
-  dark = false;
 
-  constructor() {
-    const prefersColor = window.matchMedia('(prefers-color-scheme: dark)');
-    this.dark = prefersColor.matches;
-    this.updateDarkMode();
 
-    prefersColor.addEventListener(
-      'change',
-      mediaQuery => {
-        this.dark = mediaQuery.matches;
-        this.updateDarkMode();
-      }
-    );
+  constructor(
+    private navCtrl: NavController
+  ) {
   }
 
-  updateDarkMode() {
-    console.log('hoge');
-    document.body.classList.toggle('dark', this.dark);
+  toMembers(){
+    this.navCtrl.navigateForward('/members');
   }
+
 }
