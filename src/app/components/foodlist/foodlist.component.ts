@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
-import {FoodListItem} from '../../interface';
+import { ToastController } from '@ionic/angular';
+import { FoodListItem } from '../../interface';
 import { ApiService } from '../../services/api.service';
 
 @Component({
@@ -9,10 +10,10 @@ import { ApiService } from '../../services/api.service';
 })
 export class FoodlistComponent implements OnInit {
   @Input() datas: FoodListItem[];
-  // datas = [1, 2, 3, 4, 5, 6, 7, 8, 9];
 
   constructor(
-    private api: ApiService
+    private api: ApiService,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {}
@@ -21,7 +22,16 @@ export class FoodlistComponent implements OnInit {
     this.api.updateStock('firstFamily', twitterLink).subscribe(
       res => {
         console.log(res);
+        this.updateStockToast();
       }
     );
+  }
+
+  async updateStockToast(){
+    const toast = await this.toastCtrl.create({
+      message: 'ストックが完了しました',
+      duration: 2000
+    });
+    await toast.present();
   }
 }

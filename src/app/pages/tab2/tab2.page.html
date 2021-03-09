@@ -12,5 +12,11 @@
       <ion-title size="large">ストック</ion-title>
     </ion-toolbar>
   </ion-header>
-  <p>{{stock.link}}</p>
+  <div *ngIf="stock.link === 'nothing'; else elseBlock">
+    <p>ストックはありません</p>
+  </div>
+  <ng-template #elseBlock>
+    <p>{{stock.link}}</p>
+    <ion-button shape="round" expand="full" class="delete-button" color="danger" (click)="deleteStock()">ストックを削除する</ion-button>
+  </ng-template>
 </ion-content>

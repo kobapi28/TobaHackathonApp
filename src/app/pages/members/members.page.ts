@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {NavController, AlertController } from '@ionic/angular';
+import { NavController, AlertController, ToastController } from '@ionic/angular';
 import { ApiService } from '../../services/api.service';
-import {User} from '../../interface';
+import { User } from '../../interface';
 
 @Component({
   selector: 'app-members',
@@ -14,7 +14,8 @@ export class MembersPage implements OnInit {
   constructor(
     private navCtrl: NavController,
     private api: ApiService,
-    private alertCtrl: AlertController
+    private alertCtrl: AlertController,
+    private toastCtrl: ToastController
   ) { }
 
   ngOnInit() {
@@ -41,6 +42,8 @@ export class MembersPage implements OnInit {
     this.api.updateUser('firstFamily', 'shoma28_').subscribe(
       res => {
         console.log(res);
+        this.users = res;
+        this.updateUserToast();
       }
     );
   }
@@ -66,6 +69,14 @@ export class MembersPage implements OnInit {
     });
 
     await alert.present();
+  }
+
+  async updateUserToast(){
+    const toast = await this.toastCtrl.create({
+      message: 'ユーザを更新しました',
+      duration: 2000
+    });
+    await toast.present();
   }
 
 }
