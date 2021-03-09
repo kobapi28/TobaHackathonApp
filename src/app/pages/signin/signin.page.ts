@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-signin',
@@ -7,9 +8,21 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SigninPage implements OnInit {
 
-  constructor() { }
+  familyId = '';
+
+  constructor(
+    private api: ApiService
+  ) { }
 
   ngOnInit() {
+  }
+
+  enterFamilyRoom(){
+    this.api.enterFamilyRoom(this.familyId).subscribe(
+      res => {
+        console.log(res);
+      }
+    );
   }
 
 }

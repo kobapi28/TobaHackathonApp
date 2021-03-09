@@ -3,6 +3,14 @@ export interface FoodListItem{
   link: string;
 }
 
+export interface Stock{
+  link: string;
+}
+
+export interface User{
+  twitterId: string;
+}
+
 
 // Responce Interface
 export interface ResponseFoodListItem{
@@ -13,3 +21,13 @@ export interface ResponseFoodListItem{
     }
   ];
 }
+
+export interface ResponseStock{
+  twi_link: string;
+}
+
+export interface ResponseUsers{
+  twi_id: string[];
+}
+
+

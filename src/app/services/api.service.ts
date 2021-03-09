@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
-import { FoodListItem, ResponseFoodListItem } from '../interface';
+import {FoodListItem, ResponseFoodListItem, ResponseStock, ResponseUsers, Stock, User} from '../interface';
 import { Observable } from 'rxjs';
 import { tap, map, concatMap, } from 'rxjs/operators';
 
@@ -18,8 +18,9 @@ export class ApiService {
 
   // いいねを取得する
   // tab1
-  getFavorites(): Observable<FoodListItem[]>{
-    return this.http.get<ResponseFoodListItem>(`${this.baseURL}/get-favorites/${this.familyId}`)
+  // done
+  getFavorites(familyId: string): Observable<FoodListItem[]>{
+    return this.http.get<ResponseFoodListItem>(`${this.baseURL}/get-favorites/${familyId}`)
       .pipe(
         map((response) => {
           const datas = response.res;
@@ -32,44 +33,79 @@ export class ApiService {
 
   // ストックを取得する
   // tab2
-  getStocks(){
-    return this.http.get(`${this.baseURL}/show-stock/${this.familyId}`);
+  // done
+  getStock(familyId: string): Observable<Stock>{
+    return this.http.get<ResponseStock>(`${this.baseURL}/show-stock/${familyId}`)
+      .pipe(
+        map((response) => {
+          return {link: response.twi_link};
+        })
+      );
   }
 
   // ストックを作成・更新する
   // tab1
-  updateStocks(){
-    console.log('post');
-    return this.http.post(`${this.baseURL}/create-stock`, {twi_link: 'hoge'});
+  updateStock(familyId: string, twitterLink: string): Observable<Stock>{
+    const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    return this.http.post<ResponseStock>(`${this.baseURL}/create-stock`, {family_id: familyId, twi_link: twitterLink})
+      .pipe(
+        map((response) => {
+          return {link: response.twi_link};
+        })
+      );
   }
 
   // ストックを削除する
   // tab2
-  deleteStock(){
-    console.log('post');
-    return this.http.post(`${this.baseURL}/delete-stock/${this.familyId}`, {twi_link: 'hoge'});
+  deleteStock(familyId: string): Observable<Stock>{
+    const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    return this.http.post<ResponseStock>(`${this.baseURL}/delete-stock`, {family_id: familyId})
+      .pipe(
+        map((response) => {
+          return {link: response.twi_link};
+        })
+      );
   }
 
   // 設定一覧(登録ユーザ一覧)
   // tab3の下のページ
-  showUsers(){
-    console.log('get');
-    return this.http.get(`${this.baseURL}/show-config/${this.familyId}`);
+  // done
+  showUsers(familyId: string): Observable<User[]>{
+    return this.http.get<ResponseUsers>(`${this.baseURL}/show-config/${familyId}`)
+      .pipe(
+        map((response) => {
+          const users = response.twi_id;
+          return users.map(user => {
+            return {twitterId: user};
+          });
+        })
+      );
   }
 
   // 登録ユーザ更新
   // tab3の下のページ
-  updateUser(){
-    console.log('post');
-    return this.http.post(`${this.baseURL}/update-config`, {twi_link: 'hoge'});
+  // done
+  updateUser(familyId: string, twitterId: string): Observable<User[]>{
+    const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
+    return this.http.post<ResponseUsers>(`${this.baseURL}/update-config`,
+      {family_id: familyId, twi_id: twitterId}, {headers})
+      .pipe(
+        map((response) => {
+          const users = response.twi_id;
+          return users.map(user => {
+            return {twitterId: user};
+          });
+        })
+      );
   }
 
   // 部屋作成
   // signup
+  // done
   createFamilyRoom(familyId: string, twitterId: string): Observable<FoodListItem[]>{
     console.log(twitterId);
     console.log(familyId);
-    const headers = new HttpHeaders({'Content-Type': 'application/json'});
+    const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
     return this.http.post<ResponseFoodListItem>(`https://arcane-bastion-80677.herokuapp.com/create-family`,
       {family_id: familyId, twi_id: twitterId}, {headers})
       .pipe(
@@ -84,8 +120,9 @@ export class ApiService {
 
   // 入室
   // signin
-  enterFamilyRoom(): Observable<FoodListItem[]>{
-    return this.http.get<ResponseFoodListItem>(`${this.baseURL}/enter/${this.familyId}`)
+  // done
+  enterFamilyRoom(familyId: string): Observable<FoodListItem[]>{
+    return this.http.get<ResponseFoodListItem>(`${this.baseURL}/enter/${familyId}`)
       .pipe(
         map((response) => {
           const datas = response.res;

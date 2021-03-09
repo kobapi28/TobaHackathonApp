@@ -20,6 +20,16 @@ export class Tab1Page implements OnInit{
   ngOnInit(){
   }
 
+  ionViewDidEnter(){
+    this.getFavorites();
+  }
 
-
+  getFavorites(){
+    this.api.getFavorites('firstFamily').subscribe(
+      res => {
+        console.log(res);
+        this.datas = res;
+      }
+    );
+  }
 }
