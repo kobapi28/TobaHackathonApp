@@ -38,19 +38,19 @@ export class ApiService {
     return this.http.get<ResponseStock>(`${this.baseURL}/show-stock/${familyId}`)
       .pipe(
         map((response) => {
-          return {link: response.twi_link};
+          return {image: response.twi_img, link: response.twi_link};
         })
       );
   }
 
   // ストックを作成・更新する
   // tab1
-  updateStock(familyId: string, twitterLink: string): Observable<Stock>{
+  updateStock(familyId: string, twitterLink: string, imageLink: string): Observable<Stock>{
     const headers = new HttpHeaders({'Content-Type': 'application/x-www-form-urlencoded'});
-    return this.http.post<ResponseStock>(`${this.baseURL}/create-stock`, {family_id: familyId, twi_link: twitterLink})
+    return this.http.post<ResponseStock>(`${this.baseURL}/create-stock`, {family_id: familyId, twi_link: twitterLink, twi_img: imageLink})
       .pipe(
         map((response) => {
-          return {link: response.twi_link};
+          return {image: response.twi_img, link: response.twi_link};
         })
       );
   }
@@ -62,7 +62,7 @@ export class ApiService {
     return this.http.post<ResponseStock>(`${this.baseURL}/delete-stock`, {family_id: familyId})
       .pipe(
         map((response) => {
-          return {link: response.twi_link};
+          return {image: response.twi_img, link: response.twi_link};
         })
       );
   }

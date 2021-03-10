@@ -8,6 +8,7 @@ import {FoodListItem} from '../../interface';
   styleUrls: ['tab1.page.scss']
 })
 export class Tab1Page implements OnInit{
+  /*
   datas: FoodListItem[] = [
     {
       image: 'https://pbs.twimg.com/media/Ev9LvI9UcAE1c-Z.jpg',
@@ -21,10 +22,10 @@ export class Tab1Page implements OnInit{
       image: 'https://pbs.twimg.com/media/Ev9LvI9UcAE1c-Z.jpg',
       link: 'https://twitter.com/70_pocky/status/1368896109137956864'
     },
-  ];
+  ];*/
 
   // APIの制限かからん為に
-  // datas: FoodListItem[] = [];
+  datas: FoodListItem[] = [];
 
   constructor(
     private  api: ApiService
@@ -35,7 +36,7 @@ export class Tab1Page implements OnInit{
   }
 
   ionViewDidEnter(){
-    // this.getFavorites();
+    this.getFavorites();
   }
 
   getFavorites(){

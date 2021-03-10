@@ -18,8 +18,8 @@ export class FoodlistComponent implements OnInit {
 
   ngOnInit() {}
 
-  updateStock(twitterLink: string){
-    this.api.updateStock('firstFamily', twitterLink).subscribe(
+  updateStock(twitterLink: string, twitterImage: string){
+    this.api.updateStock('firstFamily', twitterLink, twitterImage).subscribe(
       res => {
         console.log(res);
         this.updateStockToast();

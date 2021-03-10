@@ -4,6 +4,7 @@ export interface FoodListItem{
 }
 
 export interface Stock{
+  image: string;
   link: string;
 }
 
@@ -24,6 +25,7 @@ export interface ResponseFoodListItem{
 
 export interface ResponseStock{
   twi_link: string;
+  twi_img: string;
 }
 
 export interface ResponseUsers{

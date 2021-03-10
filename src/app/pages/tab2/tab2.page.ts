@@ -9,7 +9,7 @@ import { Stock } from '../../interface';
   styleUrls: ['tab2.page.scss']
 })
 export class Tab2Page {
-  stock: Stock = {link: 'https://twitter.com/shinukosub/status/1368835892148805633'};
+  stock: Stock = {image: '', link: ''};
 
   constructor(
     private api: ApiService,
@@ -17,7 +17,7 @@ export class Tab2Page {
   ) {}
 
   ionViewDidEnter(){
-    // this.getStock();
+    this.getStock();
   }
 
   getStock(){

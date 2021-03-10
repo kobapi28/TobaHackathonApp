@@ -16,7 +16,10 @@
     <p>ストックはありません</p>
   </div>
   <ng-template #elseBlock>
-    <p>{{stock.link}}</p>
-    <ion-button shape="round" expand="full" class="delete-button" color="danger" (click)="deleteStock()">ストックを削除する</ion-button>
+    <ion-img [src]="stock.image"></ion-img>
+    <div class="buttons">
+      <ion-button shape="round" expand="full" class="button" color="primary" [href]="stock.link">Twitterでみる</ion-button>
+      <ion-button shape="round" expand="full" class="button" color="danger" (click)="deleteStock()">ストックを削除する</ion-button>
+    </div>
   </ng-template>
 </ion-content>
