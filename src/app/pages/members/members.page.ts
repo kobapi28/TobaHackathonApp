@@ -30,7 +30,7 @@ export class MembersPage implements OnInit {
   }
 
   showUsers(){
-    this.api.showUsers('firstFamily').subscribe(
+    this.api.showUsers(this.api.getFamilyId()).subscribe(
       res => {
         console.log(res);
         this.users = res;
@@ -38,8 +38,18 @@ export class MembersPage implements OnInit {
     );
   }
 
-  updateUser(){
-    this.api.updateUser('firstFamily', 'shoma28_').subscribe(
+  updateUser(twitterId: string){
+    this.api.updateUser(this.api.getFamilyId(), twitterId).subscribe(
+      res => {
+        console.log(res);
+        this.users = res;
+        this.updateUserToast();
+      }
+    );
+  }
+
+  deleteUser(twitterId: string){
+    this.api.deleteUser(this.api.getFamilyId(), twitterId).subscribe(
       res => {
         console.log(res);
         this.users = res;
@@ -61,8 +71,9 @@ export class MembersPage implements OnInit {
       buttons: [
         {
           text: '追加する',
-          handler: () => {
-            this.updateUser();
+          handler: data => {
+            console.log(data.twitterID);
+            this.updateUser(data.twitterID);
           }
         }
       ]

@@ -24,6 +24,8 @@ export class SignupPage implements OnInit {
     this.api.createFamilyRoom(this.familyId, this.twitterId).subscribe(
       res => {
         console.log(res);
+        this.api.setFamilyId(this.familyId);
+        this.navCtrl.navigateForward('/tabs/tab1');
       }
     );
   }

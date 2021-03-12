@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { NavController } from '@ionic/angular';
+import { ApiService } from '../../services/api.service';
 
 @Component({
   selector: 'app-tab3',
@@ -10,12 +11,18 @@ export class Tab3Page {
 
 
   constructor(
-    private navCtrl: NavController
+    private navCtrl: NavController,
+    private api: ApiService
   ) {
   }
 
   toMembers(){
     this.navCtrl.navigateForward('/members');
+  }
+
+  logout(){
+    this.api.setFamilyId('');
+    this.navCtrl.navigateRoot('/signin');
   }
 
 }

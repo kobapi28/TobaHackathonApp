@@ -33,14 +33,15 @@ export class Tab1Page implements OnInit{
 
 
   ngOnInit(){
-  }
-
-  ionViewDidEnter(){
     this.getFavorites();
   }
 
+  ionViewDidEnter(){
+    // this.getFavorites();
+  }
+
   getFavorites(){
-    this.api.getFavorites('firstFamily').subscribe(
+    this.api.getFavorites(this.api.getFamilyId()).subscribe(
       res => {
         console.log(res);
         this.datas = res;

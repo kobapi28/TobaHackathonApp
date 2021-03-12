@@ -21,7 +21,7 @@ export class Tab2Page {
   }
 
   getStock(){
-    this.api.getStock('firstFamily').subscribe(
+    this.api.getStock(this.api.getFamilyId()).subscribe(
       res => {
         console.log(res);
         this.stock = res;
@@ -30,7 +30,7 @@ export class Tab2Page {
   }
 
   deleteStock(){
-    this.api.deleteStock('firstFamily').subscribe(
+    this.api.deleteStock(this.api.getFamilyId()).subscribe(
       res => {
         console.log(res);
         this.stock = res;

@@ -23,6 +23,8 @@ export class SigninPage implements OnInit {
     this.api.enterFamilyRoom(this.familyId).subscribe(
       res => {
         console.log(res);
+        this.api.setFamilyId(this.familyId);
+        this.navCtrl.navigateForward('/tabs/tab1');
       }
     );
   }

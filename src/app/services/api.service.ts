@@ -10,11 +10,19 @@ import { tap, map, concatMap, } from 'rxjs/operators';
 export class ApiService {
 
   baseURL = 'https://arcane-bastion-80677.herokuapp.com';
-  familyId = 'hoge';
+  familyId = 'firstFamily';
 
   constructor(
     private  http: HttpClient
   ) { }
+
+  getFamilyId(){
+    return this.familyId;
+  }
+
+  setFamilyId(familyId: string){
+    this.familyId = familyId;
+  }
 
   // いいねを取得する
   // tab1
@@ -91,6 +99,23 @@ export class ApiService {
       {family_id: familyId, twi_id: twitterId}, {headers})
       .pipe(
         map((response) => {
+          console.log(response);
+          const users = response.twi_id;
+          return users.map(user => {
+            return {twitterId: user};
+          });
+        })
+      );
+  }
+
+  // ユーザ削除
+  // member
+  deleteUser(familyId: string, twitterId: string){
+    return this.http.post<ResponseUsers>(`${this.baseURL}/delete-config`,
+      {family_id: familyId, twi_id: twitterId})
+      .pipe(
+        map((response) => {
+          console.log(response);
           const users = response.twi_id;
           return users.map(user => {
             return {twitterId: user};

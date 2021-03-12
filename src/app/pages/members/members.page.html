@@ -9,6 +9,7 @@
 <ion-content>
   <ion-item *ngFor="let user of users">
     <ion-text>{{user.twitterId}}</ion-text>
+    <ion-icon slot="end" name="close-outline" color="danger" (click)="deleteUser(user.twitterId)"></ion-icon>
   </ion-item>
   <ion-button (click)="inputAlert()">メンバーを追加する</ion-button>
 </ion-content>
